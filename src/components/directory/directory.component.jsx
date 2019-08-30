@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
-import MenuItem from '../menu-item/menu-item.component';
+import MenuItem from "../menu-item/menu-item.component";
 
-import './directory.styles.scss';
+import "./directory.styles.scss";
 
 class Directory extends React.Component {
   constructor() {
@@ -11,31 +11,41 @@ class Directory extends React.Component {
     this.state = {
       sections: [
         {
-          title: 'hats',
-          imageUrl: 'https://i.ibb.co/cvpntL1/hats.png',
-          id: 1
+          title: "LED",
+          imageUrl:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRM-iCR2C-HqT9_C-5oCAIKP5SCp96DnEBy4phzHasihm2CcT7o9g",
+          id: 1,
+          linkUrl: "led"
         },
         {
-          title: 'jackets',
-          imageUrl: 'https://i.ibb.co/px2tCc3/jackets.png',
-          id: 2
+          title: "SPEAKERS",
+          imageUrl:
+            "https://cdn.shopify.com/s/files/1/0332/7761/products/Speaker_Angles_Pair_1024x1024.jpg?v=1527069293",
+          id: 2,
+          linkUrl: ""
         },
         {
-          title: 'sneakers',
-          imageUrl: 'https://i.ibb.co/0jqHpnp/sneakers.png',
-          id: 3
+          title: "RADIO",
+          imageUrl:
+            "https://images-na.ssl-images-amazon.com/images/I/71b%2BcUSxnRL._SX679_.jpg",
+          id: 3,
+          linkUrl: ""
         },
         {
-          title: 'womens',
-          imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
-          size: 'large',
-          id: 4
+          title: "MOBILE-PHONE ACESSORIES",
+          imageUrl:
+            "https://assets.bwbx.io/images/users/iqjWHBFdfxIU/i.jNbjW78f3I/v0/1200x800.jpg",
+          size: "large",
+          id: 4,
+          linkUrl: ""
         },
         {
-          title: 'mens',
-          imageUrl: 'https://i.ibb.co/R70vBrQ/men.png',
-          size: 'large',
-          id: 5
+          title: "HEADPHONES",
+          imageUrl:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS85E8fi8Laa0kTHKHBo598Wavw8soBPFTXXfUvow3uD7fkOKPm",
+          size: "large",
+          id: 5,
+          linkUrl: ""
         }
       ]
     };
@@ -43,9 +53,9 @@ class Directory extends React.Component {
 
   render() {
     return (
-      <div className='directory-menu'>
-        {this.state.sections.map(({ title, imageUrl, id, size }) => (
-          <MenuItem key={id} title={title} imageUrl={imageUrl} size={size} />
+      <div className="directory-menu">
+        {this.state.sections.map(({id, ...otherSection }) => (
+          <MenuItem key={id} {...otherSection}/>
         ))}
       </div>
     );
