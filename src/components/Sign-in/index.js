@@ -1,4 +1,9 @@
 import React, { Component } from "react";
+import FormInput from "../form-input"
+import FormButton from "../form-button"
+
+import { signInWithGoogle } from "../../firebase"
+import "./index.scss"
 
 export default class SignIn extends Component {
   constructor(props) {
@@ -12,16 +17,16 @@ export default class SignIn extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
     this.setState({
-        email: "",
-        password:""
+      email: "",
+      password: ""
     })
   }
 
-  handleChange = (event) =>{ 
-    const{name, value} = event.target
+  handleChange = (event) => {
+    const { name, value } = event.target
 
     this.setState({
-        [name] : value
+      [name]: value
     })
   }
   render() {
@@ -30,23 +35,26 @@ export default class SignIn extends Component {
         <h2>I Already have an Account</h2>
         <span>Sign in with your Email and Password</span>
         <form onSubmit={this.handleSubmit}>
-          <input
+          <FormInput
             name="email"
             type="email"
             value={this.state.email}
             onChange={this.handleChange}
+            label="email"
             required
           />
-          <label>Email</label>
-          <input
+          <FormInput
             name="password"
             type="password"
             value={this.state.password}
             onChange={this.handleChange}
+            label="password"
             required
           />
-          <label>Password</label>
-          <input type="submit" value="Submit form" />
+          <div className="buttons">
+            <FormButton type="submit" value="Submit form">SignIn</FormButton>
+            <FormButton onClick={signInWithGoogle} isGoogleSignIn={true}>Sign In with Google</FormButton>
+          </div>
         </form>
       </div>
     );
